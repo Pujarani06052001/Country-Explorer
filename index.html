@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Country Explorer</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h3>Favorites</h3>
+      <div id="favorites" class="wishlist-section"></div>
+    </div>
+
+    <div class="main-content" id="mainPage">
+      <div style="position: relative;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search countries..." />
+          <button class="search-button" onclick="searchCountry()">Search</button>
+        </div>
+        
+        <div id="searchSuggestions" class="suggestions-container"></div>
+      </div>
+
+      <div class="filters">
+        <select id="regionFilter" class="filter-select" onchange="filterCountries()">
+          <option value="">Filter by Region</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+        <select id="languageFilter" class="filter-select" onchange="filterCountries()">
+          <option value="">Filter by Language</option>
+          <option value="English">English</option>
+          <option value="Spanish">Spanish</option>
+          <option value="French">French</option>
+          <option value="Arabic">Arabic</option>
+        </select>
+      </div>
+
+      <div id="countryList" class="country-list"></div>
+
+      <button id="showMoreBtn" class="show-more-button">Show More</button>
+    </div>
+
+    <div id="countryDetails" class="country-details"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
