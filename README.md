@@ -1,10 +1,22 @@
+Here's a polished version of the **Project Title and Description** section for your `README.md` file:
 
+---
 
-Country Explorer is an interactive web application designed to help users explore information about countries worldwide. Using the app, users can:
+# Country Explorer
 
-Search for countries by name.
-Filter countries by region and language.
-View detailed information on individual countries, such as population, capital, area, and official languages.
-Save countries to a favorites list for quick access.
-<img width="941" alt="2024-10-31 (1)" src="https://github.com/user-attachments/assets/7476cb4b-3541-4da2-ba53-c919a300a89d">
-<img width="283" alt="2024-10-31 (3)" src="https://github.com/user-attachments/assets/cde054f9-149c-45b7-a1e8-b239d9ee50e7">
+**Country Explorer** is a dynamic web application designed for users to explore and discover countries around the world with ease. This app provides an intuitive platform to:
+
+- **Search** for countries by name, making it easy to find specific information.
+- **Filter** countries based on region and language to narrow down searches.
+- **View detailed country information**, including population, capital city, area, and official languages.
+- **Save favorite countries** for quick access, allowing users to create a personalized list of frequently visited entries.
+
+### Screenshots
+
+#### Desktop View
+<img width="941" alt="Country Explorer - Desktop View" src="https://github.com/user-attachments/assets/7476cb4b-3541-4da2-ba53-c919a300a89d">
+
+#### Mobile View
+<img width="283" alt="Country Explorer - Mobile View" src="https://github.com/user-attachments/assets/cde054f9-149c-45b7-a1e8-b239d9ee50e7">
+
+With responsive design, **Country Explorer** ensures an optimized and engaging experience across both desktop and mobile devices, compatible with major browsers for a seamless exploration journey.
