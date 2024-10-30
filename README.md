@@ -2,7 +2,7 @@ Here's a polished version of the **Project Title and Description** section for y
 
 ---
 
-# Country Explorer
+# Country Explorer 🌍
 
 **Country Explorer** is a dynamic web application designed for users to explore and discover countries around the world with ease. This app provides an intuitive platform to:
 
@@ -12,6 +12,17 @@ Here's a polished version of the **Project Title and Description** section for y
 - **Save favorite countries** for quick access, allowing users to create a personalized list of frequently visited entries.
 
 ### Screenshots
+Technologies Used
+Country Explorer is built using the following technologies:
+
+HTML: For structuring the web application.
+CSS: For styling and layout, ensuring a visually appealing user interface.
+JavaScript: This is for interactivity and dynamic content, enhancing user experience.
+REST API: Utilized to fetch country data in real time.
+
+#Clone the Repository
+git clone https://github.com/your-username/Country-Explorer.git
+cd Country-Explorer
 
 #### Desktop View
 <img width="941" alt="Country Explorer - Desktop View" src="https://github.com/user-attachments/assets/7476cb4b-3541-4da2-ba53-c919a300a89d">
