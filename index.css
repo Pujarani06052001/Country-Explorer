@@ -221,3 +221,21 @@ body {
       width: 100%; 
   }
 }
+.like-button {
+  font-size: 24px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.like-button::before {
+  content: "♡"; /* Unicode for hollow heart */
+  color: #fff;
+}
+
+.liked::before {
+  content: "♥"; /* Unicode for filled heart */
+  color: red;
+}
