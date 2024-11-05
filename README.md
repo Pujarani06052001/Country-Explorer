@@ -1,11 +1,14 @@
 🌍 Country Explore
+
 Welcome to the Country Explore project! This application allows users to explore various countries around the world. You can search for countries by name or filter them by language. Additionally, users can save their favorite countries for quick access and view detailed information about each country by clicking on its image.
 
 ✨ Features
+
 🔍 Search Countries: Quickly find countries by name.
 🌐 Filter by Language: Browse countries based on the languages spoken.
 ❤️ Favorites: Add countries to your favorites for easy access.
 🖼️ Detailed Country View: Click on a country's image to see detailed information, including population, area, and more.
+
 🛠️ Technologies Used
 JavaScript
 HTML
