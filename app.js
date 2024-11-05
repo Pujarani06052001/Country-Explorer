@@ -1,12 +1,14 @@
+let currentPage = 1;
+const pageSize = 10;
 let allCountries = [];
-let favorites = []; 
+let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
 async function fetchCountries() {
   try {
     const response = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,region,capital,population,area,languages,tld");
     allCountries = await response.json();
-    displayCountries(allCountries);
-    displayFavorites();
+    displayCountries(allCountries.slice(0, pageSize));
+    displayWishlist();
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -18,104 +20,137 @@ function displayCountries(countries) {
   countries.forEach(country => {
     const countryCard = document.createElement('div');
     countryCard.classList.add('country-card');
-    const isFavorited = favorites.some(item => item.name === country.name.common);
     countryCard.innerHTML = `
-      <img src="${country.flags.png}" alt="Flag of ${country.name.common}">
+      <img class='main-img' src="${country.flags.png}" alt="Flag of ${country.name.common}" onclick="showCountryDetails('${country.name.common}')">
       <h3>${country.name.common}</h3>
-      <button class="like-button ${isFavorited ? 'liked' : ''}" onclick="toggleFavorites('${country.name.common}', '${country.flags.png}', this)">❤️</button>
-      <button class="view-button" onclick="showCountryDetails('${country.name.common}')">View Details</button>
+      <button class="like-button" onclick="toggleWishlist('${country.name.common}', this)">❤️</button>
     `;
     countryList.appendChild(countryCard);
   });
-}
 
-function searchCountry() {
-  const searchValue = document.getElementById('searchInput').value.toLowerCase();
-  const filteredCountries = allCountries.filter(country =>
-    country.name.common.toLowerCase().includes(searchValue)
-  );
-  displayCountries(filteredCountries);
+  // Show the "Show more" button if there are more countries to load
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  showMoreBtn.style.display = currentPage * pageSize < allCountries.length ? 'block' : 'none';
 }
 
 function showCountryDetails(countryName) {
   const country = allCountries.find(c => c.name.common === countryName);
-  const countryDetails = document.getElementById('countryDetails');
-  countryDetails.innerHTML = `
-    <div class="details-content">
+  if (country) {
+    const detailsPage = document.getElementById('countryDetails');
+    detailsPage.innerHTML = `
       <h2>${country.name.common}</h2>
       <img src="${country.flags.png}" alt="Flag of ${country.name.common}">
-      <p><strong>Region:</strong> ${country.region}</p>
+      <p><strong>Top Level Domain:</strong> ${country.tld[0]}</p>
       <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}</p>
-      <p><strong>Population:</strong> ${country.population}</p>
-      <p><strong>Area:</strong> ${country.area} km²</p>
-      <p><strong>Languages:</strong> ${country.languages ? Object.values(country.languages).join(', ') : 'N/A'}</p>
-      <button onclick="hideCountryDetails()">Close</button>
-    </div>
-  `;
-  countryDetails.style.display = 'block';
+      <p><strong>Region:</strong> ${country.region}</p>
+      <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+      <p><strong>Area:</strong> ${country.area.toLocaleString()} km²</p>
+      <p><strong>Languages:</strong> ${Object.values(country.languages).join(', ')}</p>
+      <button class='back' onclick="goBack()">Back</button>
+    `;
+    document.getElementById('mainPage').style.display = 'none';
+    detailsPage.style.display = 'block';
+  }
 }
 
-function hideCountryDetails() {
-  const countryDetails = document.getElementById('countryDetails');
-  countryDetails.style.display = 'none';
+function goBack() {
+  document.getElementById('mainPage').style.display = 'block';
+  document.getElementById('countryDetails').style.display = 'none';
+}
+
+function toggleWishlist(countryName, button) {
+  if (wishlist.includes(countryName)) {
+    wishlist = wishlist.filter(name => name !== countryName);
+    button.classList.remove('liked');
+  } else if (wishlist.length < 5) {
+    wishlist.push(countryName);
+    button.classList.add('liked');
+  }
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  displayWishlist();
+}
+
+function displayWishlist() {
+  const wishlistList = document.getElementById('wishlist');
+  wishlistList.innerHTML = wishlist.length ? '<h3>Wishlist</h3>' : '';
+  wishlist.forEach(wished => {
+    const country = allCountries.find(c => c.name.common === wished);
+    if (country) {
+      const wishItem = document.createElement('div');
+      wishItem.className = 'wish-item';
+      wishItem.innerHTML = `
+        <img class='wish-img' src="${country.flags.png}" alt="Flag of ${country.name.common}" class="wishlist-flag">
+        <p>${country.name.common} <button class="Remove" onclick="removeWishlist('${wished}')">Remove</button></p>
+      `;
+      wishlistList.appendChild(wishItem);
+    }
+  });
+
+  wishlistList.style.display = wishlist.length ? 'block' : 'none';
+}
+
+function removeWishlist(countryName) {
+  wishlist = wishlist.filter(name => name !== countryName);
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  displayWishlist();
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  const suggestions = allCountries
+    .filter(country => country.name.common.toLowerCase().includes(query))
+    .slice(0, 5);
+  const suggestionsContainer = document.getElementById('searchSuggestions');
+  suggestionsContainer.innerHTML = suggestions
+    .map(country => `<p class="suggestion-item" onclick="searchCountry('${country.name.common}')">${country.name.common}</p>`)
+    .join('');
+  const viewAllBtn = `<button onclick="viewAllResults('${query}')">View All</button>`;
+  suggestionsContainer.innerHTML += viewAllBtn;
+});
+
+// Add this event listener for the search button
+document.querySelector('.sBtn').addEventListener('click', function() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const results = allCountries.filter(country => country.name.common.toLowerCase().includes(query));
+  displayCountries(results);
+  document.getElementById('searchSuggestions').innerHTML = ''; // Clear suggestions when searching
+});
+
+function searchCountry(name) {
+  const country = allCountries.find(c => c.name.common === name);
+  if (country) {
+    displayCountries([country]);
+    document.getElementById('searchSuggestions').innerHTML = '';
+  }
+}
+
+function viewAllResults(query) {
+  const results = allCountries.filter(country => country.name.common.toLowerCase().includes(query));
+  displayCountries(results);
+  document.getElementById('searchSuggestions').innerHTML = '';
 }
 
 function filterCountries() {
-  const regionFilter = document.getElementById('regionFilter').value;
-  const languageFilter = document.getElementById('languageFilter').value;
-
-  const filteredCountries = allCountries.filter(country => {
-    const regionMatch = regionFilter ? country.region === regionFilter : true;
-    const languageMatch = languageFilter ? country.languages && Object.values(country.languages).includes(languageFilter) : true;
-    return regionMatch && languageMatch;
-  });
-
+  const language = document.getElementById('languageFilter').value;
+  const region = document.getElementById('regionFilter').value;
+  let filteredCountries = allCountries;
+  if (language) {
+    filteredCountries = filteredCountries.filter(country => Object.values(country.languages || {}).includes(language));
+  }
+  if (region) {
+    filteredCountries = filteredCountries.filter(country => country.region === region);
+  }
   displayCountries(filteredCountries);
 }
 
-function toggleFavorites(countryName, flagUrl, button) {
-  const countryIndex = favorites.findIndex(item => item.name === countryName);
-  if (countryIndex > -1) {
-    favorites.splice(countryIndex, 1);
-    button.classList.remove('liked'); 
-  } else {
-    favorites.push({ name: countryName, flag: flagUrl });
-    button.classList.add('liked'); s
-  }
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-  displayFavorites();
-}
+document.getElementById('showMoreBtn').addEventListener('click', () => {
+  currentPage++;
+  const startIndex = (currentPage - 1) * pageSize;
+  const newCountries = allCountries.slice(startIndex, startIndex + pageSize);
+  displayCountries(newCountries);
+});
 
-
-function displayFavorites() {
-    const favoritesList = document.getElementById('favorites');
-    favoritesList.innerHTML = ''; 
-  
-    if (favorites.length > 0) {
-      favoritesList.innerHTML = '<h3>Favorites</h3>'; 
-      favorites.forEach(item => {
-        const favItem = document.createElement('div');
-        favItem.className = 'fav-item';
-        favItem.style.display = 'flex'; 
-        favItem.style.alignItems = 'center'; 
-        favItem.innerHTML = `
-          <img src="${item.flag}" alt="Flag of ${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
-          <p style="margin: 0; flex-grow: 1;">${item.name}</p> <!-- Remove margin and allow text to grow -->
-          <button class="remove-button" onclick="removeFavorite('${item.name}')">Remove</button>
-        `;
-        favoritesList.appendChild(favItem);
-      });
-      favoritesList.style.display = 'block'; 
-    } else {
-      favoritesList.style.display = 'none';
-    }
-  }
-  
-
-function removeFavorite(countryName) {
-  favorites = favorites.filter(item => item.name !== countryName);
-  localStorage.setItem('favorites', JSON.stringify(favorites));
-  displayFavorites();
-}
+document.getElementById('languageFilter').addEventListener('change', filterCountries);
+document.getElementById('regionFilter').addEventListener('change', filterCountries);
 
 fetchCountries();
