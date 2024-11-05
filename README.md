@@ -33,10 +33,10 @@ Start Exploring! 🚀 You can now use the application to search and explore coun
 
 📖 Usage
 
-Searching for a Country: Use the search bar at the top to enter a country name.
-Filtering by Language: Select a language from the dropdown menu to see countries that speak that language.
-Adding to Favorites: Click the heart icon next to a country to add it to your favorites.
-Viewing Country Details: Click on a country's image to view its details, including population, area, and other interesting facts.
+🔍 Searching for a Country: Use the search bar at the top to enter a country name.
+🌐 Filtering by Language: Select a language from the dropdown menu to see countries that speak that language.
+❤️ Adding to Favorites: Click the heart icon next to a country to add it to your favorites.
+🗺️ Viewing Country Details: Click on a country’s image to view detailed information, including population, area, and other interesting facts.
 
 
 #### Desktop View
