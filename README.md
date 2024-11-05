@@ -24,7 +24,7 @@ To set up and run the Country Explore application on your local machine, follow 
 
 2. Navigate to the Project Directory:
 
-cd country-explore
+   cd country-explore
 
 Open the index.html File: Open index.html in your preferred web browser.
 
