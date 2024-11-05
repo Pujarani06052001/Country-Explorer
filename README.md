@@ -10,23 +10,29 @@ Welcome to the Country Explore project! This application allows users to explore
 🖼️ Detailed Country View: Click on a country's image to see detailed information, including population, area, and more.
 
 🛠️ Technologies Used
+
 JavaScript
 HTML
 CSS
 
 📦 Setup and Installation
+
 To set up and run the Country Explore application on your local machine, follow these steps:
 
 Clone the Repository:
+
 git clone https://github.com/yourusername/country-explore.git
 
 Navigate to the Project Directory:
+
 cd country-explore
 
 Open the index.html File: Open index.html in your preferred web browser.
+
 Start Exploring! 🚀 You can now use the application to search and explore countries.
 
 📖 Usage
+
 Searching for a Country: Use the search bar at the top to enter a country name.
 Filtering by Language: Select a language from the dropdown menu to see countries that speak that language.
 Adding to Favorites: Click the heart icon next to a country to add it to your favorites.
