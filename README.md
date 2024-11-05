@@ -27,7 +27,7 @@ To set up and run the Country Explore application on your local machine, follow 
 
 Clone the Repository:
 
-git clone https://github.com/yourusername/country-explore.git
+git clone (https://github.com/Pujarani06052001/Country-Explorer)
 
 Navigate to the Project Directory:
 
