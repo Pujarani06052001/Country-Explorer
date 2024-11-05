@@ -1,33 +1,26 @@
-🌍 Country Explore
+# 🌍 Country Explore
 
+## Overview
 Welcome to the Country Explore project! This application allows users to explore various countries around the world. You can search for countries by name or filter them by language. Additionally, users can save their favorite countries for quick access and view detailed information about each country by clicking on its image.
 
- 
-✨ Features
+## ✨ Features
+- **🔍 Search Countries**: Quickly find countries by entering their name in the search bar.
+- **🌐 Filter by Language**: Select a language from the dropdown to view countries where that language is spoken.
+- **❤️ Favorites**: Easily access your favorite countries by clicking the heart icon.
+- **🖼️ Detailed Country View**: Get comprehensive details about each country by clicking on its flag image.
 
-🔍 Search Countries: Quickly find countries by name.
-🌐 Filter by Language: Browse countries based on the languages spoken.
-❤️ Favorites: Add countries to your favorites for easy access.
-🖼️ Detailed Country View: Click on a country's image to see detailed information, including population, area, and more.
+## 🛠️ Technologies Used
+- **JavaScript**: For dynamic content and user interactions.
+- **HTML**: For structuring the web pages.
+- **CSS**: For styling and layout design.
 
-
-🛠️ Technologies Used
-
-JavaScript
-
-HTML
-
-CSS
-
-
-📦 Setup and Installation
-
+## 📦 Setup and Installation
 To set up and run the Country Explore application on your local machine, follow these steps:
 
+1. Clone the Repository:
+   
+   git clone https://github.com/Pujarani06052001/Country-Explorer
 
-Clone the Repository:
-
-git clone (https://github.com/Pujarani06052001/Country-Explorer)
 
 Navigate to the Project Directory:
 
