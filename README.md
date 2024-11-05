@@ -48,13 +48,13 @@ Viewing Country Details: Click on a country's image to view its details, includi
 
 #### Desktop View
 
-<img width="939" alt="2024-11-05" src="https://github.com/user-attachments/assets/9b426249-bac4-434b-a2b9-99f2c950f1a5">
+<img width="946" alt="2024-11-06" src="https://github.com/user-attachments/assets/ecdab641-6878-4aa7-8331-a52dd24fa4ed">
 
 
 #### Mobile View
 
+<img width="275" alt="2024-11-05 (1)" src="https://github.com/user-attachments/assets/d5bf9570-0143-4c74-aa22-d9cf6a200e98">
 
-<img width="349" alt="2024-11-05 (1)" src="https://github.com/user-attachments/assets/4bc292b4-2a09-4c32-8e8e-d644c57b220f">
 
 With responsive design, **Country Explorer** ensures an optimized and engaging experience across both desktop and mobile devices, compatible with major browsers for a seamless exploration journey.
 
