@@ -12,7 +12,9 @@ Welcome to the Country Explore project! This application allows users to explore
 🛠️ Technologies Used
 
 JavaScript
+
 HTML
+
 CSS
 
 📦 Setup and Installation
@@ -39,12 +41,16 @@ Adding to Favorites: Click the heart icon next to a country to add it to your fa
 Viewing Country Details: Click on a country's image to view its details, including population, area, and other interesting facts.
 
 #### Desktop View
+
 <img width="939" alt="2024-11-05" src="https://github.com/user-attachments/assets/9b426249-bac4-434b-a2b9-99f2c950f1a5">
 
 #### Mobile View
 
+
 <img width="349" alt="2024-11-05 (1)" src="https://github.com/user-attachments/assets/4bc292b4-2a09-4c32-8e8e-d644c57b220f">
 
 With responsive design, **Country Explorer** ensures an optimized and engaging experience across both desktop and mobile devices, compatible with major browsers for a seamless exploration journey.
+
 🙏 Acknowledgments
+
 Thank you for taking the time to explore the Country Explore project! If you have any questions or feedback, feel free to reach out.
