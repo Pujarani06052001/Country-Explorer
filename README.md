@@ -22,7 +22,7 @@ To set up and run the Country Explore application on your local machine, follow 
    git clone https://github.com/Pujarani06052001/Country-Explorer
 
 
-Navigate to the Project Directory:
+2.Navigate to the Project Directory:
 
 cd country-explore
 
